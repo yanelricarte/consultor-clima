@@ -38,7 +38,7 @@ class ConsultorClima:
     
     def __init__(self, api_key: str):
         self.api_key = api_key
-        self.base_url = "http://api.openweathermap.org/data/2.5"
+        self.base_url = "https://api.openweathermap.org/data/2.5"
         self.timeout = 10
         
     def obtener_clima_actual(self, ciudad: str) -> str:
