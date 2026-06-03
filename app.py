@@ -68,7 +68,11 @@ class ConsultorClima:
             resultado = self._formatear_clima_actual(data)
             logger.info(f"Clima obtenido exitosamente para: {ciudad}")
             return resultado
-            
+
+        except ClimaError:
+            # Re-lanzar los errores específicos (404, 401, datos incompletos, etc.)
+            # sin que el except genérico de abajo los re-envuelva.
+            raise
         except requests.exceptions.Timeout:
             logger.error(f"Timeout al consultar clima para: {ciudad}")
             raise ClimaError("La consulta tardó demasiado tiempo")
